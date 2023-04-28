@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 
 const App = () => {
   const [jsonData, setJsonData] = useState(null);
-  console.log(jsonData.purchase_order['@attributes']);
+  console.log(jsonData?.purchase_order['@attributes']);
  const [xmlData, setXmlData] = useState("");
   const handleFileSelect = async (event) => {
     const file = event.target.files[0];
@@ -53,14 +53,10 @@ const App = () => {
   return (
     <div>
       <h1>Input</h1>
-      <input type="file" accept=".xml" onChange={(e)=>handleFileSelect(e)} />
+      <input type="file" accept=".xml" onChange={(e) => handleFileSelect(e)} />
       {jsonData ? (
         <div>
-          <h1></h1>
-          
-          <ul>
-            
-          </ul>
+          <p>{jsonData?.purchase_order['@attributes'].account_code}</p>
         </div>
       ) : (
         <p>Please select an XML file.</p>
